@@ -8,7 +8,8 @@ var recluster = require('recluster');
 var PORT = 8099;
 
 describe('GET /', function() {
-    it('shdould respond from worker', function(done) {
+    it('should respond from worker', function(done) {
+        this.timeout(6000);
         var cluster = recluster(path.join(__dirname, 'harness/server.js'), {
             readyWhen: 'ready'
         });
