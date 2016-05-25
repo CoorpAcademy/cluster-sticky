@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "node test/test-basic.js",
+    "test": "npm run lint && node test/test-basic.js",
     "lint": "jscs index.js ./lib/ ./test/ && jshint index.js ./lib/ ./test/"
   },
   "devDependencies": {

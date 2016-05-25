@@ -1,4 +1,4 @@
-# cluster-sticky
+# cluster-sticky [![Build Status](https://travis-ci.org/CoorpAcademy/cluster-sticky.svg?branch=master)](https://travis-ci.org/CoorpAcademy/cluster-sticky)
 
 A simple performant way to use socket.io with [recluster][recluster], based on
 Spion's sticky-listen.
@@ -6,7 +6,7 @@ Spion's sticky-listen.
 This fork was motivated by needs to handle:
 - high performance balancer
 - multi proxy forwarded header
-- use in complex production environment with several threads, dynos (heroku) and cloudflare cdn 
+- use in complex production environment with several threads, dynos (heroku) and cloudflare cdn
 - stronlgy tested
 ## Installation
 
