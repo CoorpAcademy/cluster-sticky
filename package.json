@@ -1,7 +1,7 @@
 {
   "name": "@coorpacademy/cluster-sticky",
   "description": "Sticky listener based on Spion 's sticky-listen",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "author": "Loïc Calvy <lc@coorpacademy.com>",
   "main": "index.js",
   "engines": {
