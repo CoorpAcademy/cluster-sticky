@@ -11,7 +11,7 @@ This fork was motivated by needs to handle:
 ## Installation
 
 ```bash
-npm install sticky-listen
+npm install @coorpacademy/sticky-listen
 ```
 
 ## Usage

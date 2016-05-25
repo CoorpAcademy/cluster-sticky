@@ -1,5 +1,5 @@
 {
-  "name": "cluster-sticky",
+  "name": "@coorpacademy/cluster-sticky",
   "description": "Sticky listener based on Spion 's sticky-listen",
   "version": "4.0.0",
   "author": "Loïc Calvy <lc@coorpacademy.com>",
