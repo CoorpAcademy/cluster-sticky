@@ -9,12 +9,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "npm run lint && node test/test-basic.js",
+    "test": "npm run lint && npm run test:back",
+    "test:back": "NPM_ENV=test mocha 'test/**/*Spec.js'",
     "lint": "eslint lib test index.js"
   },
   "devDependencies": {
     "@coorpacademy/eslint-plugin-coorpacademy": "^1.1.2",
     "eslint": "^2.10.2",
+    "mocha": "^2.5.3",
     "recluster": "^0.4.3"
   },
   "directories": {
