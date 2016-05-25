@@ -4,3 +4,11 @@ node_js:
 - '4'
 - '5'
 - '6'
+deploy:
+  provider: npm
+  email: system@coorpacademy.com
+  api_key:
+    secure: Dz22kV0ePQ6zEzBlIoZP4SaoYHT4ZGYnWF/gY0KKkPLIo+4Jr856ymJ+ndQGfpQPpWeBsBKwcGiCcF2x8ahMnG+jEN1ySRnFShDFpgTlqd9ZK7QgJyRu6jRDZaXFiotUhyzcb0ZUAHYzKcesBUeqg4w+gixTv4qpYnVZvQKur83IQL+dKcaIcK6nJSNrPAUrl4JmXPszeUtOAK1AHi4nhXQ8Vw5uOR/JQ98LKbd8cGwaXxIrgcLI06YKWXH9nhJTSZHUERgug9XG974VlcvgdeXuazrvQw68dIkLBBlZKP00wctSfmQhrNLJDkiiLBE9YfBfhMKWTRC32ebeVcTYw1BUnTs7rOuU4jQooSaSzk4EePzqB7/W0/TcZzmAnuECFix33fPLXg/rL5zP+P3TIkQBwz/n9BuSEg+gfQYpINypNDOSD4IQjhfvpp674pwzU1Y1gp42TPVXke/G4JN0ESXCWccNVeMBZdRBSHRsydHcUbVyqX61S3UbcUE79kpdw0aftxQA1bXU6or4BIghiTLP/QTxTNEqx0R6ugmcr+QZ07HCqVE6NG9Ec19XJj5qOnviP0kffoT1iATafbzIQIua3bpYlyoa5dpjm2UJq+E3ZOa/ao697e+JG9P941IOqmrAPRInA1Gi4sjEHk9Ulfvr0x9c3P94tjEeRXXOVG0=
+  on:
+    tags: true
+    repo: CoorpAcademy/cluster-sticky
