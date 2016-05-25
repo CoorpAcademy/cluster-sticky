@@ -23,7 +23,7 @@ describe('GET /', function() {
             var sticky = null;
 
             function cb(res) {
-                if (sticky == null) {
+                if (sticky === null) {
                     sticky = res.headers['x-sticky'];
                 }
                 assert.notEqual(res.headers['x-sticky'], null);
