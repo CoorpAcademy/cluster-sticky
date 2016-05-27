@@ -4,45 +4,77 @@ var sticky = require('../');
 var path = require('path');
 var http = require('http');
 var recluster = require('recluster');
-
-var PORT = 8099;
-
+var getPort = require('get-port');
+var Promise = require('bluebird');
+var cluster = null;
+var maxWorkers = 4;
 describe('GET /', function() {
     it('should respond from worker', function(done) {
-        this.timeout(6000);
-        var cluster = recluster(path.join(__dirname, 'harness/server.js'), {
-            readyWhen: 'ready'
-        });
-        cluster.run();
+        this.timeout(10000);
 
-        assert(cluster.activeWorkers().length > 1);
-        var balancer = sticky.createBalancer({activeWorkers: cluster.activeWorkers});
-        balancer.listen(PORT, function() {
-            // Master
-            var waiting = 100;
-            var sticky = null;
+        function startServer(port) {
+            cluster = recluster(path.join(__dirname, 'harness/server.js'), {
+                readyWhen: 'ready',
+                workers: maxWorkers
+            });
+            cluster.run();
+            return port;
+        }
 
-            function cb(res) {
-                if (sticky === null) {
-                    sticky = res.headers['x-sticky'];
+        function waitForWorkers(port) {
+            function workerIsReady(resolve) {
+                if (cluster.activeWorkers().length === maxWorkers) {
+                    return resolve(port);
                 }
-                assert.notEqual(res.headers['x-sticky'], null);
-                assert(res.headers['x-sticky'] === sticky);
-                sticky = res.headers['x-sticky'];
-                res.resume();
-                if (--waiting === 0) {
-                    done();
-                }
+                setTimeout(function() {
+                    workerIsReady(resolve);
+                }, 100);
             }
 
-            for (var i = 0; i < waiting; i++) {
-                http.request({
-                    method: 'GET',
-                    host: '127.0.0.1',
-                    port: PORT
-                }, cb).end();
-            }
-        });
+            return new Promise(function(resolve) {
+                workerIsReady(resolve);
+            });
+        }
+
+        function test(port) {
+            var balancer = sticky.createBalancer({activeWorkers: cluster.activeWorkers});
+            balancer.listen(port, function() {
+                // Master
+                var waiting = 50;
+                var sticky = null;
+
+                function cb(res) {
+                    if (sticky === null) {
+                        sticky = res.headers['x-sticky'];
+                    }
+                    assert.equal(res.statusCode, 200);
+                    assert.equal(res.headers['x-sticky'].indexOf('process='), 0);
+                    assert(res.headers['x-sticky'] === sticky);
+                    res.resume();
+                    if (--waiting === 0) {
+                        cluster.terminate(done);
+                    }
+                }
+
+                function call() {
+                    var req = http.request({
+                        method: 'GET',
+                        host: '127.0.0.1',
+                        port: port
+                    }, cb);
+                    req.end();
+                }
+
+                for (var i = 0; i < waiting; i++) {
+                    call();
+                }
+            });
+        }
+
+        getPort()
+        .then(startServer)
+        .then(waitForWorkers)
+        .then(test);
     });
 });
 
