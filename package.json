@@ -18,7 +18,7 @@
     "bluebird": "^3.4.0",
     "eslint": "^2.10.2",
     "get-port": "^2.1.0",
-    "mocha": "^2.5.3",
+    "mocha": "^3.1.0",
     "recluster": "^0.4.3"
   },
   "directories": {
