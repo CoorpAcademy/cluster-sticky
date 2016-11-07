@@ -40,6 +40,6 @@
   },
   "homepage": "https://github.com/coorpacademy/cluster-sticky#readme",
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": "^2.3.0"
   }
 }
