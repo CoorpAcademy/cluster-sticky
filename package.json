@@ -14,11 +14,11 @@
     "lint": "eslint lib test index.js"
   },
   "devDependencies": {
-    "@coorpacademy/eslint-plugin-coorpacademy": "^1.1.2",
+    "@coorpacademy/eslint-plugin-coorpacademy": "^2.0.0",
     "bluebird": "^3.4.0",
-    "eslint": "^2.10.2",
+    "eslint": "^3.9.1",
     "get-port": "^2.1.0",
-    "mocha": "^2.5.3",
+    "mocha": "^3.1.2",
     "recluster": "^0.4.3"
   },
   "directories": {
