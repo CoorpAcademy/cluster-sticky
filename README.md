@@ -1,5 +1,7 @@
 # cluster-sticky [![Build Status](https://travis-ci.org/CoorpAcademy/cluster-sticky.svg?branch=master)](https://travis-ci.org/CoorpAcademy/cluster-sticky)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/CoorpAcademy/cluster-sticky.svg)](https://greenkeeper.io/)
+
 A simple performant way to use socket.io with [recluster][recluster], based on
 Spion's sticky-listen.
 
